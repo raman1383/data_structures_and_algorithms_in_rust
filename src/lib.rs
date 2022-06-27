@@ -48,3 +48,6 @@ pub fn prime_or_not(n: f64) -> bool {
         return true;
     }
 }
+
+/// Find the Fibonacci series till the term less than 1000
+pub fn find_fib_till_less_1000() {}
