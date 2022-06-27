@@ -9,5 +9,14 @@ pub mod tree_based_dsa_1;
 pub mod tree_based_dsa_2;
 
 fn main() {
-    println!("Hello, world!");
+    // swap without temp
+
+    let mut x = 10;
+    let mut y = 5;
+
+    x = x + y;
+    y = x - y;
+    x = x - y;
+
+    println!("{x} {y}")
 }
