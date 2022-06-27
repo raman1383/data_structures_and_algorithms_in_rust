@@ -29,3 +29,22 @@ pub fn find_factorial(n: f64) {
 
     println!("{}", factorial)
 }
+
+/// Check whether a number is prime or not
+pub fn prime_or_not(n: f64) -> bool {
+    let mut flag: f64 = 1.00;
+    let mut i: f64 = 2.00;
+
+    while i != (n / 2.00) {
+        if n % i == 0.00 {
+            flag = 0.00;
+            break;
+        }
+        i = i + 1.00;
+    }
+    if flag == 0.00 {
+        return false;
+    } else {
+        return true;
+    }
+}
