@@ -18,5 +18,5 @@ fn main() {
     y = x - y;
     x = x - y;
 
-    println!("{x} {y}")
+    println!("{x} {y}");
 }
