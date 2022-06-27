@@ -50,4 +50,20 @@ pub fn prime_or_not(n: f64) -> bool {
 }
 
 /// Find the Fibonacci series till the term less than 1000
-pub fn find_fib_till_less_1000() {}
+pub fn find_fib_till_less_1000() -> f64 {
+    let mut first_term: f64;
+    let mut second_term: f64;
+    let mut temp: f64;
+
+    first_term = 0.00;
+    second_term = 1.00;
+
+    println!(" f={}  s={}", first_term, second_term);
+
+    while second_term <= 1000.00 {
+        temp = second_term;
+        second_term = second_term + first_term;
+        first_term = temp;
+    }
+    second_term
+}
