@@ -19,4 +19,6 @@ fn main() {
     x = x - y;
 
     println!("{x} {y}");
+
+    println!("{}", other_algs::fun::find_factorial_2(5))
 }

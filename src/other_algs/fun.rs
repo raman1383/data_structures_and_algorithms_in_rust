@@ -67,3 +67,20 @@ pub fn find_fib_till_less_1000() -> f64 {
     }
     second_term
 }
+
+pub fn find_factorial_2(n: u128) -> u128 {
+    let mut fact: u128 = 1;
+    for v in 1..n {
+        fact = fact * v;
+    }
+    fact
+}
+
+/// danger to run
+pub fn sum_of_first_10_pow_11_naturals() -> u128 {
+    let mut sum: u128 = 0;
+    for n in 0..(10 as u128).pow(11) {
+        sum = sum + n;
+    }
+    sum
+}
