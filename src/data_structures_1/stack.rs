@@ -1,8 +1,8 @@
 /// A linear DS following LIFO
 pub struct Stack {
-    count: i128,
-    top: i128,
-    items: Vec<i128>,
+    count: usize,
+    top: isize,
+    items: Vec<isize>,
 }
 
 impl Stack {
@@ -14,23 +14,23 @@ impl Stack {
         }
     }
 
-    pub fn push(&mut self, item_to_push: i128) {
-        if !self.is_full() {
-            self.top = self.top + 1;
-            self.items[self.top as usize] = item_to_push;
-            self.count = self.count + 1;
-        } else {
+    pub fn push(&mut self, item_to_push: isize) {
+        if self.is_full() {
             println!("!!! FULL !!!")
+        } else {
+            self.top = self.top + 1;
+            self.count = self.count + 1;
+            self.items[self.top as usize] = item_to_push;
         }
     }
 
     pub fn pop(&mut self) {
-        if !self.is_empty() {
-            self.top = self.top - 1;
-            self.items[self.top as usize] = self.items[self.top as usize - 1];
-            self.count = self.count - 1;
-        } else {
+        if self.is_empty() {
             println!("!!! Empty !!!")
+        } else {
+            self.top = self.top - 1;
+            self.count = self.count - 1;
+            self.items[self.top as usize] = self.items[self.top as usize - 1];
         }
     }
 
@@ -53,8 +53,8 @@ impl Stack {
     // pub fn peek(&self) {}
 
     pub fn print_stack(&self) {
-        for i in 1..self.count {
-            println!("{}", self.items[i as usize])
+        for i in 0..self.top {
+            print!("[ {:?} ]", self.items[i as usize])
         }
     }
 }

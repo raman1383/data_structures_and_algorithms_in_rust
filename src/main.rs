@@ -30,6 +30,7 @@ fn main() {
     stack_1.push(54);
     stack_1.print_stack();
     stack_1.pop();
-    stack_1.pop();
-    stack_1.pop();
+    stack_1.print_stack();
+    // stack_1.pop();
+    // stack_1.pop();
 }
