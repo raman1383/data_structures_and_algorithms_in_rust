@@ -91,3 +91,27 @@ pub fn sum_of_first_10_pow_11_naturals() -> u128 {
     sum = (10 as u128).pow(11) * ((10 as u128).pow(11) + 1) / 2;
     sum
 }
+
+/// Dynamic fibonacci
+pub fn dynamic_fib(n: usize) -> usize {
+    let mut mem = [];
+    if mem.contains(&n) {
+        mem[n]
+    } else {
+        if n < 2 {
+            1
+        } else {
+            mem[n] = dynamic_fib(n - 1) + dynamic_fib(n - 2);
+            mem[n]
+        }
+    }
+}
+
+/// divide & conquer fibonacci
+pub fn divide_conquer_fib(n: u128) -> u128 {
+    if n < 2 {
+        1
+    } else {
+        divide_conquer_fib(n - 1) + divide_conquer_fib(n - 2)
+    }
+}
