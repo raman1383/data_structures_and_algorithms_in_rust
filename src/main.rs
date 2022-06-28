@@ -28,11 +28,6 @@ fn main() {
     stack_1.push(23);
     stack_1.push(34);
     stack_1.push(45);
-    stack_1.print_stack();
-    stack_1.pop();
-    stack_1.print_stack();
-    stack_1.pop();
-    stack_1.print_stack();
-    stack_1.pop();
+    // stack_1.pop();
     stack_1.print_stack();
 }

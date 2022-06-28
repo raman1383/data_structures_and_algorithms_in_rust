@@ -2,7 +2,7 @@
 pub struct Stack {
     count: usize,
     top: isize,
-    items: Vec<isize>,
+    items: Box<[isize]>,
 }
 
 impl Stack {
@@ -10,7 +10,7 @@ impl Stack {
         Stack {
             count: 0,
             top: -1,
-            items: Vec::with_capacity(10),
+            items: Box::new([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
         }
     }
 
@@ -20,7 +20,7 @@ impl Stack {
         } else {
             self.top = self.top + 1;
             self.count = self.count + 1;
-            self.items.push(item_to_push);
+            self.items[self.top as usize] = item_to_push;
         }
     }
 
@@ -30,7 +30,7 @@ impl Stack {
         } else {
             self.top = self.top - 1;
             self.count = self.count - 1;
-            self.items.pop();
+            // self.items[self.top as usize] = self.items[self.top as usize - 1];
         }
     }
 
