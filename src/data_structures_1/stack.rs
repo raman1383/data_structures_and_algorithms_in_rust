@@ -20,7 +20,7 @@ impl Stack {
         } else {
             self.top = self.top + 1;
             self.count = self.count + 1;
-            self.items[self.top as usize] = item_to_push;
+            self.items.push(item_to_push);
         }
     }
 
@@ -30,7 +30,7 @@ impl Stack {
         } else {
             self.top = self.top - 1;
             self.count = self.count - 1;
-            self.items[self.top as usize] = self.items[self.top as usize - 1];
+            self.items.pop();
         }
     }
 
@@ -43,17 +43,17 @@ impl Stack {
     }
 
     pub fn is_full(&self) -> bool {
-        if self.top == -1 {
-            false
-        } else {
+        if self.top == 9 {
             true
+        } else {
+            false
         }
     }
 
     // pub fn peek(&self) {}
 
     pub fn print_stack(&self) {
-        for i in 0..self.top {
+        for i in 0..self.top + 1 {
             print!("[ {:?} ]", self.items[i as usize])
         }
     }

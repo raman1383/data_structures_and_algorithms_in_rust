@@ -24,13 +24,15 @@ fn main() {
     println!("{}", other_algs::fun::sum_of_first_10_pow_11_naturals());
 
     let mut stack_1 = data_structures_1::stack::Stack::new();
-    stack_1.push(44);
-    stack_1.push(32);
-    stack_1.push(4);
-    stack_1.push(54);
+    stack_1.push(12);
+    stack_1.push(23);
+    stack_1.push(34);
+    stack_1.push(45);
     stack_1.print_stack();
     stack_1.pop();
     stack_1.print_stack();
-    // stack_1.pop();
-    // stack_1.pop();
+    stack_1.pop();
+    stack_1.print_stack();
+    stack_1.pop();
+    stack_1.print_stack();
 }
