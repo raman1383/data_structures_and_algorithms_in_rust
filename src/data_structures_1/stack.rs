@@ -6,11 +6,11 @@ pub struct Stack {
 }
 
 impl Stack {
-    pub fn new() -> Stack {
+    pub fn new() -> Self {
         Stack {
-            items: Vec::with_capacity(10),
             count: 0,
             top: -1,
+            items: Vec::with_capacity(10),
         }
     }
 
@@ -24,10 +24,10 @@ impl Stack {
         }
     }
 
-    pub fn pop(&mut self, item_to_pop: i128) {
+    pub fn pop(&mut self) {
         if !self.is_empty() {
             self.top = self.top - 1;
-            self.items[self.top as usize] = item_to_pop;
+            self.items[self.top as usize] = self.items[self.top as usize - 1];
             self.count = self.count - 1;
         } else {
             println!("!!! Empty !!!")
@@ -35,7 +35,7 @@ impl Stack {
     }
 
     pub fn is_empty(&self) -> bool {
-        if self.count == -1 {
+        if self.top == -1 {
             true
         } else {
             false
@@ -43,7 +43,7 @@ impl Stack {
     }
 
     pub fn is_full(&self) -> bool {
-        if self.count == -1 {
+        if self.top == -1 {
             false
         } else {
             true
@@ -53,7 +53,7 @@ impl Stack {
     // pub fn peek(&self) {}
 
     pub fn print_stack(&self) {
-        for i in 0..self.count {
+        for i in 1..self.count {
             println!("{}", self.items[i as usize])
         }
     }
