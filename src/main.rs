@@ -18,7 +18,8 @@ fn main() {
     y = x - y;
     x = x - y;
 
-    println!("{x} {y}");
+    println!("x = {x}, y = {y}");
 
-    println!("{}", other_algs::fun::find_factorial_2(5))
+    println!("{}", other_algs::fun::find_factorial_2(5));
+    println!("{}", other_algs::fun::sum_of_first_10_pow_11_naturals());
 }
