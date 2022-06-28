@@ -78,15 +78,16 @@ pub fn find_factorial_2(n: u128) -> u128 {
 
 /// danger to run
 pub fn sum_of_first_10_pow_11_naturals() -> u128 {
-    // 16 minutes to run
+    // 16 minutes to run - linear
     // let sum: u128 = 0;
     // for v in 0..(10 as u128).pow(11) {
     //     sum = sum + v;
     // }
     // sum
 
-    // 10 nanoseconds to run
+    // 10 nanoseconds to run - constant
     let sum: u128;
+    // N * (N + 1) / 2
     sum = (10 as u128).pow(11) * ((10 as u128).pow(11) + 1) / 2;
     sum
 }
