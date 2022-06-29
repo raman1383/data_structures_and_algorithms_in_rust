@@ -1,7 +1,7 @@
 pub struct CircularQueue {
     items: Vec<isize>,
-    pub rear_ptr: isize,
-    pub front_ptr: isize,
+    rear_ptr: isize,
+    front_ptr: isize,
     capacity: usize,
 }
 
