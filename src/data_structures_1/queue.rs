@@ -1,5 +1,4 @@
 /// A linear DS following FIFO
-
 pub struct Queue {
     front: isize,
     back: isize,
