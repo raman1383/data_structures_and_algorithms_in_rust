@@ -1,55 +1,54 @@
-use std::borrow::BorrowMut;
-
 /// A linear DS following FIFO
-struct QueueNode<T> {
-    value: T,
-    next: Option<Box<QueueNode<T>>>,
+
+pub struct Queue {
+    front: isize,
+    back: isize,
+    items: Vec<isize>,
 }
 
-impl<T> QueueNode<T> {
-    fn new(value: T) -> Self {
-        QueueNode { value, next: None }
+impl Queue {
+    pub fn new(capacity: usize) -> Queue {
+        Queue {
+            front: -1,
+            back: -1,
+            items: vec![0; capacity],
+        }
     }
-}
 
-pub struct Queue<T> {
-    end: Option<QueueNode<T>>,
-}
-
-impl<T> Queue<T> {
-    pub fn remove(&mut self) -> Option<T> {
-        if !self.is_empty() {
-            let end = std::mem::take(&mut self.end).unwrap();
-            if let Some(next) = end.next {
-                self.end = Some(*next);
-            }
-            Some(end.value)
+    pub fn enqueue(&mut self, item_to_enqueue: isize) {
+        if self.is_empty() {
+            self.front = 0;
+            self.back = self.back + 1;
+            self.items[self.back as usize] = item_to_enqueue;
         } else {
+            self.back = self.back + 1;
+            self.items[self.back as usize] = item_to_enqueue;
+        }
+    }
+    pub fn dequeue(&mut self) -> Option<isize> {
+        if self.is_empty() {
+            Some(-1)
+        } else if self.back == self.front {
+            self.items[self.front as usize] = 0;
+            self.back = -1;
+            self.front = -1;
+            None
+        } else {
+            self.items[self.front as usize] = 0;
+            self.front = self.front + 1;
             None
         }
     }
 
-    pub fn add(&mut self, value: T) {
-        let new_node = QueueNode::new(value);
-        if let Some(end) = &mut self.end {
-            let mut start = end;
-            loop {
-                if let Some(_) = &start.next {
-                    start = (start.next.as_mut().unwrap()).borrow_mut();
-                } else {
-                    break;
-                }
-            }
-            start.next = Some(Box::new(new_node));
+    fn is_empty(&self) -> bool {
+        if self.back == -1 && self.front == -1 {
+            true
         } else {
-            self.end = Some(new_node);
+            false
         }
     }
 
-    pub fn is_empty(&self) -> bool {
-        match self.end {
-            None => true,
-            _ => false,
-        }
+    pub fn print_out(&self) {
+        println!("{:?}", self.items)
     }
 }
