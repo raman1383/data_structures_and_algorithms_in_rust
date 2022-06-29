@@ -1,7 +1,10 @@
-pub struct Heap {}
+pub struct Heap {
+    items: Vec<isize>,
+}
 
 impl Heap {
-    pub fn heapify() {}
+    /// Heapify is the process of creating a heap data structure from a binary tree
+    pub fn heapify(vec: Vec<isize>) {}
 
     pub fn insert() {}
 
