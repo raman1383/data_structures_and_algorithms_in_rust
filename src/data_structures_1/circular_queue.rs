@@ -1,7 +1,7 @@
 pub struct CircularQueue {
     items: Vec<isize>,
-    rear_ptr: isize,
-    front_ptr: isize,
+    pub rear_ptr: isize,
+    pub front_ptr: isize,
     capacity: usize,
 }
 
@@ -18,10 +18,16 @@ impl CircularQueue {
     pub fn dequeue(&mut self) -> Option<isize> {
         if self.is_empty() {
             Some(self.front_ptr)
+        } else if self.rear_ptr == self.front_ptr {
+            self.front_ptr = -1;
+            self.rear_ptr = -1;
+            None
         } else {
-            if self.front_ptr == self.capacity.try_into().unwrap() {
-                self.front_ptr = (self.front_ptr + 1) % 5
+            if self.front_ptr == (self.capacity - 1).try_into().unwrap() {
+                self.front_ptr = (self.front_ptr + 1) % self.capacity as isize;
+                self.items[self.front_ptr as usize] = 0;
             } else {
+                self.items[self.front_ptr as usize] = 0;
                 self.front_ptr = self.front_ptr + 1;
             }
             None
@@ -34,8 +40,8 @@ impl CircularQueue {
             self.rear_ptr = self.rear_ptr + 1;
             self.items[self.rear_ptr as usize] = item_to_enqueue;
         } else {
-            if self.rear_ptr == self.capacity.try_into().unwrap() {
-                self.rear_ptr = (self.rear_ptr + 1) % 5
+            if self.rear_ptr == (self.capacity - 1).try_into().unwrap() {
+                self.rear_ptr = (self.rear_ptr + 1) % self.capacity as isize
             } else {
                 self.rear_ptr = self.rear_ptr + 1;
             }
@@ -51,5 +57,7 @@ impl CircularQueue {
         }
     }
 
-    pub fn print_out(&self) {}
+    pub fn print_out(&self) {
+        println!("{:?}", self.items)
+    }
 }
