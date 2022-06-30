@@ -26,7 +26,22 @@ impl PriorityQueue {
         }
     }
 
-    pub fn insert() {}
+    pub fn insert(arr: &mut Vec<isize>, new_num: isize) {
+        let mut size = arr.len();
+        if size == 0 {
+            arr.push(new_num);
+            size = size + 1;
+            print!("{}", size)
+        } else {
+            arr.push(new_num);
+            size = size + 1;
+            for mut i in 0..(size / 2) - 1 {
+                PriorityQueue::heapify(arr, size as isize, i as isize);
+                i = i - 1;
+                print!("{}", i)
+            }
+        }
+    }
 
     pub fn delete_node() {}
 
