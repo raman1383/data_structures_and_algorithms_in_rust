@@ -4,6 +4,7 @@ pub mod data_structures_2;
 pub mod dynamic_programming;
 pub mod graph_based_dsa_1;
 pub mod greedy_algs;
+pub mod lib_peer_to_peer;
 pub mod other_algs;
 pub mod sorting_and_searching_algs;
 pub mod tree_based_dsa_1;

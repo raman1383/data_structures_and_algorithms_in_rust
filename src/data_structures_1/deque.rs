@@ -17,7 +17,9 @@ impl Deque {
         }
     }
 
-    pub fn insert_at_front(&mut self, item: isize) {}
+    pub fn insert_at_front(&mut self, item: isize) {
+        if self.items.is_empty() {}
+    }
     pub fn insert_at_back(&mut self, item: isize) {
         self.items.push(item);
     }
