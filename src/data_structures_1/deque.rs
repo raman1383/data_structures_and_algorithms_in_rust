@@ -18,11 +18,35 @@ impl Deque {
     }
 
     pub fn insert_at_front(&mut self, item: isize) {
-        if self.items.is_empty() {}
+        if self.items.is_empty() {
+            if self.front == -1 {
+                self.front = 0;
+                self.rear = 0;
+            } else if self.front == 0 {
+                self.front = self.front - 1;
+            } else {
+                self.front = self.front - 1;
+            }
+
+            self.items[self.front as usize] = item;
+        }
     }
+
     pub fn insert_at_back(&mut self, item: isize) {
-        self.items.push(item);
+        if self.is_empty() {
+            if self.front == -1 {
+                self.front = 0;
+                self.rear = 0;
+            } else if self.rear == (self.size - 1).try_into().unwrap() {
+                self.rear = 0;
+            } else {
+                self.rear = self.rear + 1;
+            }
+
+            self.items[self.rear as usize] = item;
+        }
     }
+
     pub fn remove_at_front(&mut self) {}
     pub fn remove_at_back(&mut self) {}
 
