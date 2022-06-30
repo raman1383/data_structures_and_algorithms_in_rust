@@ -47,8 +47,31 @@ impl Deque {
         }
     }
 
-    pub fn remove_at_front(&mut self) {}
-    pub fn remove_at_back(&mut self) {}
+    pub fn remove_at_front(&mut self) {
+        if self.is_empty() {
+            if self.front == self.rear {
+                self.front = -1;
+                self.rear = -1;
+            } else if self.front == (self.size - 1).try_into().unwrap() {
+                self.front = 0;
+            } else {
+                self.front = self.front + 1;
+            }
+        }
+    }
+
+    pub fn remove_at_back(&mut self) {
+        if self.is_empty() {
+            if self.front == self.rear {
+                self.front = -1;
+                self.rear = -1;
+            } else if self.rear == 0 {
+                self.rear = self.rear - 1;
+            } else {
+                self.rear = self.rear - 1;
+            }
+        }
+    }
 
     pub fn is_empty(&self) -> bool {
         if self.items.len() == 0 {
