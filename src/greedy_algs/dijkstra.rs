@@ -36,7 +36,8 @@ pub fn dijkstra<V: Ord + Copy, E: Ord + Copy + Add<Output = E>>(
             match ans.get(next) {
                 // if ans[next] is a lower dist than the alternative one, we do nothing
                 Some(Some((_, dist_next))) if dist_new + *weight >= *dist_next => {}
-                // if ans[next] is None then next is start and so the distance won't be changed, it won't be added again in prio
+                // if ans[next] is None then next is start and so the distance won't be changed, it won't be added again in
+                // prio
                 Some(None) => {}
                 // the new path is shorter, either new was not in ans or it was farther
                 _ => {
