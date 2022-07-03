@@ -1,9 +1,7 @@
-#![allow(non_camel_case_types)]
-
 #[derive(Clone)]
 pub struct LinkedList {
-    pub(crate) value: u32,
-    pub(crate) next: Address,
+    pub value: u32,
+    pub next: Address,
 }
 
 impl LinkedList {
@@ -81,6 +79,7 @@ impl LinkedList {
 
 #[derive(Clone)]
 pub enum Address {
+    #[allow(non_camel_case_types)]
     address(Box<LinkedList>),
     Nil,
 }
