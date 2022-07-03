@@ -20,6 +20,6 @@ fn main() {
     // ll.list();
 
     for i in (0..11).step_by(2) {
-        println!("{i} It is me who builds the Grant Empire of the history")
+        println!("{i} It is me ")
     }
 }
