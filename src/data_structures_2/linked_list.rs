@@ -2,8 +2,8 @@
 
 #[derive(Clone)]
 pub struct LinkedList {
-    value: u32,
-    next: Address,
+    pub(crate) value: u32,
+    pub(crate) next: Address,
 }
 
 impl LinkedList {
@@ -41,10 +41,46 @@ impl LinkedList {
             }
         }
     }
+
+    pub fn count(&self) -> u32 {
+        match self.next {
+            Address::address(ref new_address) => 1 + new_address.count(),
+            Address::Nil => 0,
+        }
+    }
+
+    pub fn list(&self) {
+        if self.value == 0 {
+            println!("The list is empty")
+        } else {
+            println!("{}", self.value);
+            match self.next {
+                Address::address(ref next_address) => next_address.list(),
+                Address::Nil => {}
+            }
+        }
+    }
+
+    pub fn update(&mut self, index: u32, elem: u32) {
+        let mut i = 0;
+        let mut j = self;
+        if i == index {
+            j.value = elem;
+        }
+        while i < index {
+            // println!("{}", j.value);
+            match j.next {
+                Address::address(ref mut next_address) => j = next_address,
+                Address::Nil => {}
+            }
+            i = i + 1;
+        }
+        j.value = elem;
+    }
 }
 
 #[derive(Clone)]
-enum Address {
+pub enum Address {
     address(Box<LinkedList>),
     Nil,
 }

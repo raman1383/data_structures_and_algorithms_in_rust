@@ -9,4 +9,13 @@ pub mod other_algs;
 pub mod sorting_and_searching_algs;
 pub mod tree_based_dsa_1;
 pub mod tree_based_dsa_2;
-fn main() {}
+fn main() {
+    let mut ll = data_structures_2::linked_list::LinkedList {
+        value: 1,
+        next: data_structures_2::linked_list::Address::Nil,
+    };
+
+    ll.append(2);
+    ll.append(3);
+    ll.list();
+}
